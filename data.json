@@ -1,0 +1,16 @@
+[
+    {
+        "op": "income",
+        "amount": "2000",
+        "category": "salary",
+        "description": "work",
+        "time": "09/10/2024 17:41"
+    },
+    {
+        "op": "expense",
+        "amount": "100",
+        "category": "food",
+        "description": "launch",
+        "time": "09/10/2024 17:42"
+    }
+]
