@@ -9,6 +9,7 @@ class APP:
 
     def run(self):
         print('Welcome to AccountBook APP:')
+        self.book.load_json()
         while True:
             user_input = input(
                 "-------------------------\n"
@@ -45,7 +46,7 @@ class APP:
                 trans = Transaction(
                     'expense',
                     amount=input("amount: "),
-                    category=input("category: "),
+                    category=input("category: (Food, Traffic, Entertainment, Beauty, Health, Study, Socialization, Life)"),
                     description=input("description: ")
                 )
                 self.book.add_transactions(trans)

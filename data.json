@@ -1,16 +1,23 @@
 [
     {
         "op": "income",
-        "amount": "2000",
+        "amount": "14132.18",
+        "category": "income",
+        "description": "the origin balance",
+        "time": "09/10/2024 23:03"
+    },
+    {
+        "op": "income",
+        "amount": "100",
         "category": "salary",
         "description": "work",
-        "time": "09/10/2024 17:41"
+        "time": "09/10/2024 23:04"
     },
     {
         "op": "expense",
         "amount": "100",
-        "category": "food",
-        "description": "launch",
-        "time": "09/10/2024 17:42"
+        "category": "entertament",
+        "description": "game",
+        "time": "09/10/2024 23:15"
     }
 ]

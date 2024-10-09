@@ -2,12 +2,14 @@ import datetime
 import json
 import pathlib
 
+OP = ['income', 'expense']
+CATEGORY = ['Food', 'Traffic', 'Entertainment', 'Beauty', 'Health', 'Study', 'Socialization', 'Life']
 
 class Transaction:
 
     def __init__(self, op, amount, category, description, time=None):
 
-        if op not in ['income', 'expense']:
+        if op not in OP:
             raise ValueError(f'Invalid transaction op: {op}')
 
         self.op = op    # 'income' or 'expense'
@@ -50,7 +52,7 @@ class AccountBook:
     def __init__(self):
         self.balance = 0
         self.transactions = []
-        self.save_file = pathlib.Path(__file__).resolve().parent / 'data.json'
+        self.save_file_path = pathlib.Path(__file__).resolve().parent / 'data.json'
 
     def display_balance(self):
         print(f"Balance: {self.balance}")
@@ -65,7 +67,7 @@ class AccountBook:
             else:
                 raise ValueError(f'Invalid transaction op: {transaction.op}')
         self.balance = balance
-        print(f"Balance calculate success! Balance: {self.balance}")
+        print(f"Balance: ￥{self.balance}")
 
     def update_balance(self, transaction):
         if transaction.op == 'income':
@@ -91,6 +93,14 @@ class AccountBook:
         print('Display finish!')
 
     def save_json(self):
-        with self.save_file.open(mode='w') as f:
+        with self.save_file_path.open(mode='w') as f:
             data = [transaction.to_dict() for transaction in self.transactions]
             json.dump(data, f, indent=4)
+            print('save data success!')
+
+    def load_json(self):
+        with self.save_file_path.open(mode='r') as f:
+            data = json.load(f)
+            self.transactions = [Transaction.from_dict(item) for item in data]
+        print('load data success!')
+        self.calculate_balance()
